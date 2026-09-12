@@ -2,6 +2,7 @@
 
 # **Transcript**
 
+
 ### 00:10:00
 
 Sairaj Nadaf: Morning This
