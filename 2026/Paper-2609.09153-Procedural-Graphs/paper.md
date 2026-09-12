@@ -45,7 +45,7 @@ Online Inference (Section 3.2): During task solving, the graph is frozen. The ag
 
 Offline Evolution (Section 3.3): After executing a batch of training tasks, an LLM refiner analyzes the diagnostic traces and modifies the graph topology and attributes via an automated feedback loop.
 
-![Refer to caption](https://arxiv.org/html/2609.09153v1/2609.09153v1/PG_Figure2.png)
+![Figure 2: Overview of the Procedural Graph framework.](./images/figure-2-framework.png)
 
 *Figure 2: Overview of the Procedural Graph framework. *Left:* procedural triplets define $\mathcal{G}$. *Middle:* the framework localizes $u_{t}$ and retrieves its $2$-hop neighborhood $\mathcal{G}_{t}$ (or the full graph if matching fails); a guidance LLM translates it into guidance $g_{t}$ for the solver. *Right:* the refiner proposes edits from execution trajectories. Structurally valid candidates are committed when validation performance does not decrease; rejected candidates inform subsequent proposals through rejection memory.*
 
@@ -187,7 +187,7 @@ The gains also extend across model families. On GDPval and BFCL v3, PG outperfor
 
 ### 5.2 Long-Horizon Decision Making and Resilience
 
-![Refer to caption](https://arxiv.org/html/2609.09153v1/2609.09153v1/combined_ensemble_cash_comparison.png)
+![Figure 3: Ensemble cash trajectories and survival curves.](./images/figure-3-cash-and-survival.png)
 
 *Figure 3: Ensemble cash trajectories and Kaplan-Meier survival curves across four LLMs. Bold lines and shaded areas show means and $95\%$ confidence intervals. Vertical lines mark macroeconomic crises. Colors identify PG (blue), the baseline (red), and memory-based methods (green, orange).*
 
@@ -222,7 +222,7 @@ The loop also self-corrects from a flawed expert prior. On MultiChallenge, using
 
 We examine ten rounds of PG self-evolution (Section 3.3) on EnterpriseArena, where the agent manages liquidity through successive macroeconomic crises. Figure 4 tracks the resulting changes in lifespan and capital raised; Appendix E reports the per-round results.
 
-![Refer to caption](https://arxiv.org/html/2609.09153v1/2609.09153v1/loop_engineering_update.png)
+![Figure 4: Lifespan and capital raised across self-evolution rounds.](./images/figure-4-self-evolution.png)
 
 *Figure 4: Mean lifespan and capital raised across ten rounds of PG self-evolution. Gray dashed lines show training results; red lines show validation results; and green diamonds show test results for the baseline and accepted checkpoints.*
 
@@ -705,6 +705,8 @@ The evolution loop combines validation checks with structural verification to fi
 
 Figure 5 visualizes the topological changes of the CFO Procedural Graph across key evolutionary stages.
 
+![Figure 5: Topological evolution of the CFO Procedural Graph.](./images/figure-5-cfo-evolution.svg)
+
 *Figure 5: Topological evolution of the CFO Procedural Graph. Green nodes/edges [+] denote additions; red dashed nodes/edges [-] denote deletions/pruning.*
 
 - Initialization (Round 0 - Baseline): The agent has no structural prior ($\text{Start}\rightarrow\text{End}$). Without intermediate procedural guidance, the LLM must infer the action sequence from the running trajectory, leading to high computational cost, redundant tool calls, and missed tasks such as cash forecasts.
@@ -716,6 +718,8 @@ Figure 5 visualizes the topological changes of the CFO Procedural Graph across k
 ### E.4 Self-Evolution on HotpotQA and MultiChallenge
 
 We also examine self-evolution on HotpotQA (multi-hop reasoning; Appendix E.4.1) and MultiChallenge (complex instruction following; Appendix E.4.2), comparing Mode 3 (evolving from an expert-designed prior) with Mode 5 (evolving from scratch). Figure 6 shows the resulting trajectories.
+
+![Figure 6: Self-evolution on HotpotQA and MultiChallenge.](./images/figure-6-benchmark-evolution.svg)
 
 *Figure 6: Self-evolution trajectory on (a) HotpotQA and (b) MultiChallenge.*
 
