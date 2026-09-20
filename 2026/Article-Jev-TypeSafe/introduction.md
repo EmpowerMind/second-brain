@@ -2,6 +2,8 @@
 
 > Jev is TypeSafe's flagship model and the first System One model. Send state and typed questions; get structured answers your code can use directly.
 
+Source: [docs.typesafe.ai/introduction](https://docs.typesafe.ai/introduction) · Local companion note: [AI primer](./ai-primer.md)
+
 Large language models (LLMs) are designed to produce text for humans to read. When you need a model to make a judgment that your code will consume, that creates a mismatch: you are coercing a text-generation system into outputting structured decisions, then parsing the results back into something your code can depend on.
 
 Jev is TypeSafe's flagship model and the first [System One model](https://docs.typesafe.ai/concepts/system-one). System One models are built to make fast, structured decisions that software can use directly. Jev evaluates typed *questions* against a *state* and returns structured results directly. No text generation, no parsing. You get typed values and probability distributions that your code can branch on, sort by, and route with. Choice and Score also return [confidence](https://docs.typesafe.ai/confidence), which your code can use to decide whether and how to act on an answer.
@@ -43,7 +45,7 @@ For example, instead of "rate this startup pitch," ask separately about market s
 ## Next steps
 
 * [Quick Start](https://docs.typesafe.ai/introduction/quickstart) — Everything you need to get started immediately.
-* [AI Primer](https://docs.typesafe.ai/introduction/machine-learning-primer) — Why TypeSafe trains models for calibrated decisions instead of generated text.
+* [AI Primer](./ai-primer.md) — Why TypeSafe trains models for calibrated decisions instead of generated text. ([source](https://docs.typesafe.ai/introduction/machine-learning-primer))
 * [Primitives (Questions)](https://docs.typesafe.ai/primitives) — How to define questions, choose between Choice, Score, and Noul, and ask several at once.
 * [Confidence](https://docs.typesafe.ai/confidence) — How TypeSafe reports certainty, and how to use it architecturally.
 * [Patterns](https://docs.typesafe.ai/patterns) — Common patterns for building systems with TypeSafe.
