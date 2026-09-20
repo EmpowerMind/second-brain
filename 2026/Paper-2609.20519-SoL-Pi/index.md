@@ -6,12 +6,13 @@
 | **PDF** | [https://arxiv.org/pdf/2609.20519](https://arxiv.org/pdf/2609.20519) |
 | **HTML (full text)** | [arxiv.org/html/2609.20519v1](https://arxiv.org/html/2609.20519v1) |
 | **Code** | [github.com/NVlabs/SoL-Pi](https://github.com/NVlabs/SoL-Pi) |
-| **Blog post** | [nvlabs.github.io/SoL-Pi](https://nvlabs.github.io/SoL-Pi/) |
+| **Blog post** | [nvlabs.github.io/SoL-Pi](https://nvlabs.github.io/SoL-Pi/) — notes in [blog.md](./blog.md) |
 | **Published** | September 2026 (v1) |
 | **Authors** | Haozhe Liu, Tian Ye, Sensen Gao, Qihang Cao, Yitong Li, Mingchen Zhuge, Duomin Wang, Ruihua Zhang, Ping Luo, Jiawang Bian, Lei Zhu, Ligeng Zhu, Enze Xie, Song Han |
 | **Affiliation** | NVIDIA, NTU, MIT |
 | **Subject** | cs.AI / cs.SE |
 | **Local copy** | [paper.md](./paper.md) — full text converted to Markdown |
+| **Project page notes** | [blog.md](./blog.md) — the 152-idea pool, orchestration history, per-mechanism search traces |
 
 ## TL;DR
 
@@ -53,6 +54,16 @@ Ordering matters: the Reducer runs before ObservationPack, which recognizes the 
 - **Efficiency and capability trade off, and they're separate operating points.** The full stack is the cheap point; a *single* mechanism is the strong point. Stacking everything costs ~2.8 score points on EdgeBench.
 - **Mechanisms are backend-sensitive.** Trigger rate and intensity are both lower on Opus 5 (the harness was searched on GPT-5.6 Sol trajectories only) — yet efficiency still improves wherever they fire.
 - **Honest scoping by the authors** — the run counts "do not establish a scaling law"; complementarity between mechanisms is "descriptive" since each is measured on its own triggered-task subset; *recursive efficient improvement* is stated as a vision, not a demonstrated result.
+
+## Only on the project page
+
+The [blog notes](./blog.md) cover what the paper leaves out:
+
+- The complete **152-idea proposal pool** by family (Context 24 · Progress 26 · Tools 26 · Delegation 15 · Prompt & policy 15 · Improvement & evaluation 46), including the ideas recorded as *negative* results.
+- **Three orchestration designs** they went through — compiled YAML workflow → agent-written code orchestration (a new experiment could take >10 hours of coordinator changes) → disposable skill loop.
+- **Per-mechanism search traces**: Action Fusion's 12.3% oracle estimate and non-monotonic 28.3→100% trigger curve over ten batches; ObservationPack frozen at 315 lines / two hooks, one of eight swept configs inside the quality gate, and a paired A/B where response count moved only 0.20%.
+- **~1 in 40 starting ideas survived validation**, and after 5–10 iterations even GPT-5.6 Sol at xhigh settled into a local basin — which is the argument for breadth over depth.
+- **Why EdgeBench**: the only public benchmark they found supporting 2–12 hours of continuous work, and that horizon is what makes per-turn waste measurable at all.
 
 ## Why I saved this
 
