@@ -45,7 +45,7 @@ We reserve EdgeBench for final validation, keeping it isolated from the search p
 
 ### 2.2 Broad-to-Deep Harness Search
 
-![Figure 2: Development feedback and held-out evaluation remain separate throughout the search.](./images/figure-2-broad-to-deep-search.svg)
+![Figure 2: Development feedback and held-out evaluation remain separate throughout the search.](./images/figure-2-broad-to-deep-search.png)
 
 *Figure 2: Development feedback and held-out evaluation remain separate throughout the search. Execution trajectories guide mechanism proposals and implementation, while independent review and development validation inform revisions. Held-out evaluation occurs only after the candidate is frozen, and its results never feed back into the search loop.*
 
@@ -63,7 +63,7 @@ Our search pipeline uses separate environments for mechanism discovery and trans
 
 **Verifier-driven environments.** We first generate an executable verifier that defines success, then construct a task environment around it. This allows multiple valid solution paths without requiring a reference trajectory. The 40 synthetic environments primarily use a Terminal-Bench-2-style verifier interface [25], extending the search beyond repository histories while preserving automatic evaluation. Figure 3 summarizes both construction paths and the isolation boundary between mechanism search and held-out evaluation.
 
-![Figure 3: Two environment families support mechanism discovery while keeping EdgeBench held out.](./images/figure-3-search-environments.svg)
+![Figure 3: Two environment families support mechanism discovery while keeping EdgeBench held out.](./images/figure-3-search-environments.png)
 
 *Figure 3: Two environment families support mechanism discovery while keeping EdgeBench held out. Repository-derived environments use pre-fix repositories and hidden regression tests verified to fail before the accepted patch and pass afterward. Verifier-driven environments allow multiple solution paths under executable success criteria. EdgeBench remains isolated from search and is used only after the harness is frozen.*
 
@@ -158,7 +158,7 @@ We evaluate SoL-Pi in a multi-agent kernel-optimization experiment measured in s
 
 In both swarms, workers form five groups of four, with independent workspaces and a shared evidence board within each group. Workers exchange notes to reproduce or combine promising findings, while the coordinator relays findings across groups. The shared best result is updated only when the coordinator submits an immutable candidate snapshot and independent verification confirms a strict improvement.
 
-![Figure 5: Agent swarm architecture and two-hour search results.](./images/figure-5-agent-swarm.svg)
+![Figure 5: Agent swarm architecture and two-hour search results.](./images/figure-5-agent-swarm.png)
 
 *Figure 5: Agent swarm architecture and two-hour search results. (a) Group boards support local collaboration, and the coordinator shares findings across groups and submits candidates for independent verification. (b) Filled points show correct submitted candidates, open circles mark accepted commits, and step lines track the best accepted result. The cost chart shows cumulative API cost.*
 
@@ -189,13 +189,13 @@ We assess the standalone contribution of each independently learned mechanism th
 
 **Cache Reuse and Total Cost.** Shortening context can reduce prompt-cache reuse when it changes a previously cached prefix [39]. Cached input also incurs a cost, so preserving a long prefix is not always the cheapest choice over an entire task. Online Context Compact and ObservationPack trade some prefix reuse for less repeated input. Table 4 shows this trade-off: with GPT-5.6 Sol, the complete stack reduces cache-read traffic from 2.1326 B to 1.0605 B tokens, while cache-write traffic increases from 0.0141 B to 0.0316 B. Despite the additional cache-write traffic, total model cost falls from $1,339 to $894. Every single-mechanism configuration also lowers cost per score point relative to Pi under both backends. These results support evaluating the full task cost alongside task quality, rather than cache reuse alone.
 
-![Figure 6: Backend-dependent activation of the retained mechanisms on EdgeBench.](./images/figure-6-backend-activation.svg)
+![Figure 6: Backend-dependent activation of the retained mechanisms on EdgeBench.](./images/figure-6-backend-activation.png)
 
 *Figure 6: Backend-dependent activation of the retained mechanisms on EdgeBench. Panels show trigger rate, trigger intensity on a logarithmic scale, and token-efficiency gain.*
 
 Figure 6 shows that mechanism activation varies across backends. Trigger rate is the fraction of tasks on which a mechanism activates, while trigger intensity is the mean number of activations per triggered task. Both are lower under Opus 5, which may reflect the harness being optimized exclusively on GPT-5.6 Sol trajectories. Nevertheless, every configuration evaluated under Opus 5 improves token efficiency on its triggered tasks, and the complete stack preserves a similar aggregate score–efficiency trade-off across the two backends (Table 2).
 
-![Figure 7: Merge behavior of independently explored mechanisms under GPT-5.6 Sol (xhigh).](./images/figure-7-merge-behavior.svg)
+![Figure 7: Merge behavior of independently explored mechanisms under GPT-5.6 Sol (xhigh).](./images/figure-7-merge-behavior.png)
 
 *Figure 7: Merge behavior of independently explored mechanisms under GPT-5.6 Sol (xhigh). Paired bars compare standalone and full-stack trigger rate, trigger intensity, and token-efficiency gain for each mechanism. Gains use each configuration's own triggered-task subset and corresponding disabled baseline, so comparisons are descriptive. ObservationPack becomes more selective in the full stack, while every mechanism shows a larger token-efficiency gain than in its standalone configuration, a pattern consistent with complementarity in the evaluated stack.*
 
@@ -205,7 +205,7 @@ To assess the effects of combining mechanisms, Figure 7 compares each standalone
 
 We use Action Fusion as a case study of how a candidate was discovered and retained. As shown in Figure 8, the recorded lineage spans 27 iterations across four stages: oracle analysis, baseline construction, prompt and tool-schema optimization, and final held-out validation.
 
-![Figure 8: Action Fusion from opportunity to retention.](./images/figure-8-action-fusion-discovery.svg)
+![Figure 8: Action Fusion from opportunity to retention.](./images/figure-8-action-fusion-discovery.png)
 
 *Figure 8: Action Fusion from opportunity to retention. Panel (a) summarizes the 27 recorded iterations across four stages. Stage 03 records 18 prompt-optimization explorations, whereas panels (b)–(c) show ten retained steps: some steps evaluate multiple candidates in parallel, and only the best result from each parallel batch is retained. Panel (d) reports observed adjacent-action composition; panels (e)–(f) project model turns and tokens under full triggering.*
 
