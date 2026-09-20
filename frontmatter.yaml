@@ -1,2 +1,32 @@
+# All paths are relative to the repository root.
 folders:
   - path: "2026/"
+    entries:
+      - title: "Procedural Graphs: Self-Evolving Execution Structures for LLM Agents"
+        type: "paper"
+        path: "2026/Paper-2609.09153-Procedural-Graphs/"
+        documents:
+          - title: "Summary and notes"
+            path: "2026/Paper-2609.09153-Procedural-Graphs/index.md"
+          - title: "Full paper"
+            path: "2026/Paper-2609.09153-Procedural-Graphs/paper.md"
+      - title: "Jev (TypeSafe AI)"
+        type: "article"
+        path: "2026/Article-Jev-TypeSafe/"
+        documents:
+          - title: "Summary and notes"
+            path: "2026/Article-Jev-TypeSafe/index.md"
+          - title: "Introduction"
+            path: "2026/Article-Jev-TypeSafe/introduction.md"
+          - title: "AI primer"
+            path: "2026/Article-Jev-TypeSafe/ai-primer.md"
+      - title: "SoL-Pi: Recursively Scaling Auto-Research Loops for Efficient Agent Harness"
+        type: "paper"
+        path: "2026/Paper-2609.20519-SoL-Pi/"
+        documents:
+          - title: "Summary and notes"
+            path: "2026/Paper-2609.20519-SoL-Pi/index.md"
+          - title: "Full paper"
+            path: "2026/Paper-2609.20519-SoL-Pi/paper.md"
+          - title: "Companion blog notes"
+            path: "2026/Paper-2609.20519-SoL-Pi/blog.md"
